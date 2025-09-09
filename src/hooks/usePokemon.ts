@@ -1,6 +1,6 @@
 'use client';
 
-import { getPokemon } from "@/src/lib/service/pokemon";
+import { PokemonService } from "@/src/lib/service/pokemon";
 import { useState, useEffect } from "react";
 import { Pokemon } from "@/src/lib/types/pokemon";
 
@@ -13,7 +13,7 @@ export function usePokemon(id: number) {
         async function loadPokemon () {
             try {
                 setLoading(true);
-                const data = await getPokemon(id); 
+                const data = await PokemonService.getPokemon(id); 
                 setPokemon(data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'An error occurred');
